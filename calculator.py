@@ -18,13 +18,23 @@ def init_form():
     
     def button_plus_click():
         result_label["text"] += "+"
+        button_plus.configure(state="disabled")
     
     def button_eq_click():
         args = result_label["text"].split('+')
+        if len(args) != 2:
+            return
         result_label["text"] += f"={int(args[0])+int(args[1])}"
-    
+        button_num1.configure(state="disabled")
+        button_num2.configure(state="disabled")
+        button_eq.configure(state="disabled")
+   
     def button_clear_click():
         result_label["text"] = ""
+        button_num1.configure(state="normal")
+        button_num2.configure(state="normal")
+        button_plus.configure(state="normal")
+        button_eq.configure(state="normal")
 
     form = Tk()
 
